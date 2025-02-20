@@ -114,6 +114,8 @@ avoir_ou_ne_pas = ensble2 | ensble1
 
 ensbles1 = ensble1 & ensble2
 enbles2 = ensble1 ^ ensble2
+
+enbles2.
 print(ensbles1)
 print(enbles2)
 print(type(avoir_ou_ne_pas))
