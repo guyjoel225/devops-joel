@@ -185,10 +185,3 @@ def mod(*args: int) -> int:
         return reste
 
                 
-d = ["s",12,17]
-
-
-
-somme = mod(*d)
-
-print(somme)
