@@ -30,13 +30,13 @@ while continuer:
         print()
         print()
 
-        print("Vous avez opté pour une conversion decimale: ")
+        print("Vous avez opté pour une conversion binaire: ")
 
         print()
 
         #appel de la fonction conv_binaire
 
-        Add_decimale = str(input("Veuillez entrez votre adresse Ip ici: "))
+        Add_decimale = str(input("Veuillez entrez votre adresse au format decimal ici: "))
 
         var = conv_binaire(Add_decimale)
         print()
