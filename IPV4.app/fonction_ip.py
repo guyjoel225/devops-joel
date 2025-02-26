@@ -1,12 +1,17 @@
 # ce modules est consacré au fonctions pour la conversion de type
 # les type : binaire et entier
+import os
 
 binaire = []
 
 decimal = []
-
+list_address = []
 chose = ""
 
+
+ip_ad = []
+
+list_bits = []
 
 
 
@@ -22,23 +27,31 @@ chose = ""
 
 def menu():
 
+    print()
+    print()
     print("---------------------Ip Cconverter-----------------------".upper().center(100))
 
     print()
-
-    print("Effectuez un choix d'Opération:")
+    print()
+    print()
+    print("Effectuez un choix d'Opération:".center(90))
 
     print()
 
-    print("1.Pour effecuter une conversion binaire de votre adresse IPV4!")
+    print("1.Pour effecuter une conversion binaire de votre adresse IPV4.".center(74))
 
     print()
 
-    print("2.Pour effectuer une conversion decimale de votre adresse IPV4!")
+    print("2.Pour effectuer une conversion decimale de votre adresse IPV4.".center(75))
 
     print()
 
-    print("0.Entrez 0 pour quitter le programme!")
+    print("3.Pour inclure un fichie contenant les valeurs à convertir.".center(72))
+    print()
+
+    print("0.Entrez 0 pour quitter le programme.".center(50))
+
+    print()
 
 
 
@@ -110,4 +123,115 @@ def conv_ent(args):
 
 
     return ip
+
+
+
+#partie 2, elle consistera à faire deux fonction qui permettrons d'extaire des adresses ip d'un fichier pour les les calculer et 
+#les réenregistrer dans un fichier à nouveau
+
+
+
+def get_file(file, dir_name): #cette fonction permet de reccuperer les ligne d'élément dans un fichier et de les envoyer sous forme de liste
+
+
+        repertoire = os.chdir(dir_name) # permet de definr le repertoir où sera enregistré le fichier
+
+        with open(file, "r") as f:
+
+            liste = f.readlines() #ramène les lignes sous forme de liste 
+
+        return liste #ici la fonction retourne  une liste
+
+
+
+
+
+# une fonction qui permettra de d'engistrer les resultats dans un fichier 
+
+
+def register(file, dir_name, value):#cette fonction permet d'enregistrer les donnéé fournier par l'utilisateur ou le programme dans un fichier
+        
+        os.chdir(dir_name) #permt de changer de repertoire selon ce que l'utilisateur aurait fourni comme nom de repertoire
+
+
+        with open(file, "a") as f:
+             
+             f.write(value + "\n") # permet d'engistre les donner un fichier par ligne et en y ajoutant des sauts de ligne
+       
+
+
+
+# nous allons créer une fonction pour l'option trois, dont celle de travailler sur une liste contenant soit des ip binaires ou decimale
+
+
+
+
+def ip_filecalcule_bits(*ip_liste):
+
+        for ip in ip_liste:
+
+            ip = str(ip)
+
+            ip = ip.strip()
+
+            entier = ip.split(".")
+
+            bits = ""
+            binaire = []
+            address = ""
+            for ent in entier:
+
+                ent = int(ent)
+
+                bits = bin(ent)
+
+                bits = str(bits)
+
+                binaire.append(bits[2:])
+
+            address = ".".join(binaire)
+
+
+            list_bits.append(address)
+
+        return list_bits
+
+
+
+
+
+
+
+#calcul décimal des adresses ip binaiare à parti d'un fichier
+
+
+def ip_filecalcule_dec(*liste_ip):
+
+        for ip in liste_ip:
+
+                ip = str(ip)
+
+                ip = ip.strip()
+
+                bit_liste = ip.split(".")
+
+                decimal = []
+
+                ip_ad = ""
+
+                for bit in bit_liste:
+
+                    entier = int(bit,2)
+
+                    entier = str(entier)
+
+                    decimal.append(entier)
+
+                ip_ad = ".".join(decimal)
+
+                list_address.append(ip_ad)
+            
+        return list_address
+
+
 
